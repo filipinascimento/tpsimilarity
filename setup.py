@@ -8,7 +8,7 @@ with open("requirements.txt", "r") as f:
 
 setuptools.setup(
     name="tpsimilarity",
-    version="0.3.1",
+    version="0.4.0",
     author="Filipi N. Silva and Sadamori Kojaku and Attila Varga",
     author_email="filsilva@iu.edu",
     description="Package to compute TP similarities between nodes in a network.",
