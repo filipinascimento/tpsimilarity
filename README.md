@@ -81,6 +81,9 @@ from tpsimilarity import similarity
 # Create or load your graph
 G = nx.karate_club_graph()
 
+# Convert NetworkX graph to iGraph
+G = ig.Graph.from_networkx(G)
+
 # Define sources and targets
 sources = [0, 1, 2]  # Source nodes
 targets = [3, 4, 5]  # Target nodes
