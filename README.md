@@ -93,7 +93,7 @@ tp_sim = similarity.TP(
     graph=G,
     sources=sources,
     targets=targets,
-    walk_length=5
+    window_length=5
 )
 
 # tp_sim contains the similarity matrix or list based on return_type
@@ -107,7 +107,7 @@ estimated_tp = similarity.estimatedTP(
     graph=G,
     sources=sources,
     targets=targets,
-    walk_length=5,
+    window_length=5,
     walks_per_source=1000,
     batch_size=100,
     return_type="matrix",
@@ -125,7 +125,7 @@ node2vec_sim = similarity.node2vec(
     sources=sources,
     targets=targets,
     dimensions=64,
-    walk_length=10,
+    window_length=40,
     context_size=5,
     workers=4,
     batch_walks=100,
@@ -142,7 +142,7 @@ sp_tp = similarity.shortestPathsTP(
     graph=G,
     sources=sources,
     targets=targets,
-    walk_length=5
+    window_length=5
 )
 ```
 
@@ -151,7 +151,7 @@ sp_tp = similarity.shortestPathsTP(
 - **graph** (`networkx.Graph` or `igraph.Graph`): The graph on which to compute the similarities.
 - **sources** (`list`): List of source node indices.
 - **targets** (`list`): List of target node indices.
-- **walk_length** (`int`): The length of the random walks.
+- **window_length** (`int`): The length of the random walks.
 - **return_type** (`str`, optional): The format of the output (`"list"`, `"matrix"`, or `"dict"`). Default is `"matrix"`.
 - **degreeNormalization** (`bool`, optional): Whether to normalize by the degree of the target node. Default is `True`.
 - **dimensions** (`int`, optional): Number of dimensions for node embeddings in node2vec. Default is `64`.

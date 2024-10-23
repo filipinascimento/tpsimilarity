@@ -10,7 +10,7 @@ G = ig.Graph.from_networkx(G_nx)
 
 # Define sources and targets
 sources = [0, 1, 2]  # Source nodes
-targets = [3, 4, 5]  # Target nodes
+targets = [3, 4, 5, 6]  # Target nodes
 
 # Compute node2vec similarities
 node2vec_sim = similarity.node2vec(
