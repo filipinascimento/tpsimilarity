@@ -21,6 +21,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
+    "toml",
     "tqdm",
     "pandas",
     "python-igraph",
