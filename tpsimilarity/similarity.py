@@ -41,14 +41,20 @@ def shortestPathsTP(graph, sources = None, targets=None, window_length = 10, ret
         sources = np.arange(0,graph.vcount())
     if(targets is None):
         targets = np.arange(0,graph.vcount())
-    shortestPaths = graph.get_shortest_paths(sources, to=targets, output="vpath")
+    
+    shortestPaths = [[[] for j in range(0,len(targets))] for i in range(0,len(sources))]
+    targets2Index = {targets[i]:i for i in range(0,len(targets))}
+    for sourceIndex, sourceNode in enumerate(sources):
+        for path in graph.get_all_shortest_paths(sourceNode, to=targets):
+            if(len(path)>0 and len(path)<=window_length):
+                shortestPaths[sourceIndex][targets2Index[path[-1]]].append(path)
     shortestTPProbabilities = np.zeros((len(sources),len(targets)))
     degrees = np.array(graph.degree())
     for sourceNode in range(0,len(sources)):
         for targetNode in range(0,len(targets)):
             for path in shortestPaths[sourceNode][targetNode]:
                 if(path):
-                    shortestTPProbabilities[sourceNode][targetNode] += np.prod(1/degrees[path[:window_length]])
+                    shortestTPProbabilities[sourceNode,targetNode] += np.prod(1/degrees[path])
     if(return_type == "list"):
         # return a list of [(source,target,shortestTPProbabilities),...]
         return [(sources[i],targets[j],shortestTPProbabilities[i][j]) for i in range(0,len(sources)) for j in range(0,len(targets))]
