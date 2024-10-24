@@ -2,6 +2,9 @@
 
 **TP Similarity** is a Python package for computing Transition Probability (TP) similarities between nodes in a network. It offers various methods to estimate these similarities, including exact computation, estimation via random walks, shortest paths, and node2vec-based cosine similarity.
 
+[![Build Status](https://github.com/filipinascimento/tpsimilarity/actions/workflows/test.yml/badge.svg)](https://github.com/filipinascimento/tpsimilarity/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/filipinascimento/tpsimilarity/badge.svg?branch=main)](https://coveralls.io/github/filipinascimento/tpsimilarity?branch=main)
+
 ## Table of Contents
 
 - [Overview](#overview)
