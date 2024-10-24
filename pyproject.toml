@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tpsimilarity"
+version = "0.6.0"
+description = "Package to compute TP similarities between nodes in a network."
+readme = "README.md"
+requires-python = ">=3.0"
+license = {text = "MIT License"}
+authors = [
+    {name = "Filipi N. Silva", email = "filsilva@iu.edu"},
+    {name = "Sadamori Kojaku"},
+    {name = "Attila Varga"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "numpy",
+    "tqdm",
+    "pandas",
+    "python-igraph",
+    "cxrandomwalk",
+    "networkx",
+    "fastnode2vec",
+    "toml"
+]
+
+
+[tool.setuptools]
+packages = ["tpsimilarity"]

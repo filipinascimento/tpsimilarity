@@ -1,4 +1,5 @@
 numpy
+toml
 tqdm
 pandas
 python-igraph
