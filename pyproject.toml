@@ -21,7 +21,6 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
-    "toml",
     "tqdm",
     "pandas",
     "python-igraph",
@@ -32,3 +31,6 @@ dependencies = [
 
 [tool.setuptools.dynamic]
 version = {attr = "tpsimilarity.__version__"}
+
+[tool.setuptools]
+packages = ["tpsimilarity"]
