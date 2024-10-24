@@ -13,7 +13,7 @@ spTP = similarity.shortestPathsTP(
             graph=G,
             sources=sources,
             targets=targets,
-            window_length=100
+            window_length=10
         )
 
 
