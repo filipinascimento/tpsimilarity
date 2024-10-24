@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tpsimilarity"
-version = "0.5.0"
+version = "0.6.0"
 description = "Package to compute TP similarities between nodes in a network."
 readme = "README.md"
 requires-python = ">=3.0"
