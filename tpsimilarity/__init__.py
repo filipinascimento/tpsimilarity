@@ -1,2 +1,1 @@
-# tpdistance/__init__.py
-from tpsimilarity.similarity import *
+from tpsimilarity.version import __version__

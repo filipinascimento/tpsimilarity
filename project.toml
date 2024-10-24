@@ -1,0 +1,21 @@
+[project]
+name = "tpsimilarity"
+version = "0.1.0"
+description = "Package to compute TP similarities between nodes in a network."
+authors = [
+    { name = "Filipi N. Silva", email = "filsilva@iu.edu" },
+    { name = "Sadamori Kojaku" },
+    { name = "Attila Varga" }
+]
+license = { text = "MIT License" }
+readme = "README.md"
+requires-python = ">=3.0"
+dependencies = [
+    "numpy",
+    "tqdm",
+    "pandas",
+    "python-igraph",
+    "cxrandomwalk",
+    "networkx",
+    "fastnode2vec"
+]
