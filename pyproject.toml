@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tpsimilarity"
-version = "0.4.0"
+version = "0.5.0"
 description = "Package to compute TP similarities between nodes in a network."
 readme = "README.md"
 requires-python = ">=3.0"
@@ -14,7 +14,6 @@ authors = [
     {name = "Sadamori Kojaku"},
     {name = "Attila Varga"}
 ]
-version = "0.5.0"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
