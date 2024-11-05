@@ -55,11 +55,11 @@ pip install tpsimilarity
 - **Dependencies**:
   - `numpy`
   - `scipy`
-  - `networkx`
   - `gensim`
   - `tqdm`
   - `joblib`
-  - (Optional) `igraph` for handling large graphs efficiently
+  - `igraph` 
+  - (optional) `networkx`
 
 Install the dependencies using:
 
@@ -79,6 +79,7 @@ from tpsimilarity import similarity
 
 ```python
 import networkx as nx
+import igraph as ig
 from tpsimilarity import similarity
 
 # Create or load your graph
