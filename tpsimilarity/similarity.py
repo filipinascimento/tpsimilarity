@@ -192,14 +192,13 @@ def estimatedTP(graph, sources = None, targets=None, window_length=20, walks_per
 
     if(return_type == "list"):
         # return a list of [(source,target,shortestTPProbabilities),...]
-        return [(source,target,probabilities[(source,target)]) for source in sources for target in targets]
+        return [(sources[i],targets[j],probabilities[i][j]) for i in range(0,len(sources)) for j in range(0,len(targets))]
     if(return_type == "dict"):
         # return a dict of {(source,target):shortestTPProbabilities,...}
-        return {(source,target):probabilities[(source,target)] for source in sources for target in targets}
+        return {(sources[i],targets[j]):probabilities[i][j] for i in range(0,len(sources)) for j in range(0,len(targets))}
     if(return_type == "matrix"):
         # return a matrix of shortestTPProbabilities
-        return np.array([[probabilities[(source,target)] for target in targets] for source in sources])
-
+        return probabilities
 
 
 def node2vec(graph, precalculated_vectors=None, sources = None, targets=None, 
