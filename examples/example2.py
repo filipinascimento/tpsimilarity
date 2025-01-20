@@ -6,7 +6,7 @@ G = ig.Graph.Famous('Zachary')
 
 # Define sources and targets
 sources = [10, 11, 12]  # Source nodes
-targets = [10, 11, 12]  # Target nodes
+targets = [1, 3, 5, 10]  # Target nodes
 
 # Compute exact TP similarities
 estimated_tp = similarity.estimatedTP(
@@ -25,3 +25,4 @@ estimated_tp = similarity.estimatedTP(
 # Print the results
 print("Estimated TP Similarities:")
 print(estimated_tp)
+print("Shape:", estimated_tp.shape)

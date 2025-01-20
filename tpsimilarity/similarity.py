@@ -197,8 +197,8 @@ def estimatedTP(graph, sources = None, targets=None, window_length=20, walks_per
         # return a dict of {(source,target):shortestTPProbabilities,...}
         return {(sources[i],targets[j]):probabilities[i][j] for i in range(0,len(sources)) for j in range(0,len(targets))}
     if(return_type == "matrix"):
-        # return a matrix of shortestTPProbabilities
-        return probabilities
+        # return a matrix of probabilities subset for targets
+        return probabilities[:,targets]
 
 
 def node2vec(graph, precalculated_vectors=None, sources = None, targets=None, 
