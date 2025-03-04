@@ -135,7 +135,8 @@ def TP(graph, sources = None, targets=None, window_length=10, return_type = "mat
     if(return_type == "matrix"):
         #reduce matrix to sources vs targets
         Ps = Ps[sources][:, targets]
-        return Ps / degrees[targets]
+        # normalize and return np array
+        return (Ps / degrees[targets]).toarray()
     
 
 def estimatedTP(graph, sources = None, targets=None, window_length=20, walks_per_source=1_000_000,
@@ -292,12 +293,24 @@ def node2vec(graph, precalculated_vectors=None, sources = None, targets=None,
         for targetIndex, targetNode in enumerate(targets):
             probabilities[sourceIndex][targetIndex] = 1.0-spdistance.cosine(ivec[sourceNode], ivec[targetNode])
 
-    if(return_type == "list"):
-        # return a list of [(source,target,probabilities),...]
-        return [(sources[i],targets[j],probabilities[i][j]) for i in range(0,len(sources)) for j in range(0,len(targets))]
-    if(return_type == "dict"):
-        # return a dict of {(source,target):probabilities,...}
-        return {(sources[i],targets[j]):probabilities[i][j] for i in range(0,len(sources)) for j in range(0,len(targets))}
-    if(return_type == "matrix"):
-        # return a matrix of probabilities
-        return probabilities
+    # if return type is <returnType>,embedding, then also return the embedding
+    returnTypeSplit = return_type.split(",")
+
+    returnInfo = []
+    for return_type in returnTypeSplit:
+        if(return_type == "list"):
+            # return a list of [(source,target,probabilities),...]
+            returnInfo.append([(sources[i],targets[j],probabilities[i][j]) for i in range(0,len(sources)) for j in range(0,len(targets))])
+        if(return_type == "dict"):
+            # return a dict of {(source,target):probabilities,...}
+            returnInfo.append({(sources[i],targets[j]):probabilities[i][j] for i in range(0,len(sources)) for j in range(0,len(targets))})
+        if(return_type == "matrix"):
+            # return a matrix of probabilities
+            returnInfo.append(probabilities)
+        if(return_type == "embedding"):
+            # return the embedding
+            returnInfo.append(ivec)
+    if(len(returnInfo) == 1):
+        return returnInfo[0]
+    else:
+        return returnInfo
