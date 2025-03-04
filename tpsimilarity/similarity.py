@@ -273,10 +273,11 @@ def node2vec(graph, precalculated_vectors=None, sources = None, targets=None,
     if(return_type == "embedding"):
         return ivec
 
+
     probabilities = np.zeros((len(sources),len(targets)))
-    for sourceNode in range(0,len(sources)):
-        for targetNode in range(0,len(targets)):
-            probabilities[sourceNode][targetNode] = 1.0-spdistance.cosine(ivec[sourceNode], ivec[targetNode])
+    for sourceIndex, sourceNode in enumerate(sources):
+        for targetIndex, targetNode in enumerate(targets):
+            probabilities[sourceIndex][targetIndex] = 1.0-spdistance.cosine(ivec[sourceNode], ivec[targetNode])
 
     if(return_type == "list"):
         # return a list of [(source,target,probabilities),...]
