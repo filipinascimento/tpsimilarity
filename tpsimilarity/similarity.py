@@ -99,7 +99,21 @@ def TP(graph, sources = None, targets=None, window_length=10, return_type = "mat
     if(targets is None):    
         targets = np.arange(0,graph.vcount())
 
-    A = np.array(graph.get_adjacency().data)
+    # Get edges as array
+    edges = np.array(graph.get_edgelist())
+    # Create row, column indices and data for CSR matrix
+    row_ind = edges[:, 0]
+    col_ind = edges[:, 1]
+    data = np.ones(len(edges))
+
+    # For undirected graphs, add reverse edges to make matrix symmetric
+    if not graph.is_directed():
+        row_ind = np.concatenate([row_ind, col_ind])
+        col_ind = np.concatenate([col_ind, row_ind[:len(edges)]])
+        data = np.ones(len(row_ind))
+
+    # Create CSR matrix directly
+    A = sparse.csr_matrix((data, (row_ind, col_ind)), shape=(graph.vcount(), graph.vcount()))
     # by Sadamori
     deg = np.array(A.sum(axis = 1)).reshape(-1)
     P = sparse.diags(1/deg) @ A # transition matrix transposed?
@@ -272,7 +286,6 @@ def node2vec(graph, precalculated_vectors=None, sources = None, targets=None,
 
     if(return_type == "embedding"):
         return ivec
-
 
     probabilities = np.zeros((len(sources),len(targets)))
     for sourceIndex, sourceNode in enumerate(sources):
